@@ -132,8 +132,5 @@ teamMeetings:
   name: Team Meetings
 midtermReview:
   name: Midterm Review
-thanksgivingNoClass:
-  name: Thanksgiving (No class)
-  type: holiday
 noClass:
   name: No Class
