@@ -3,7 +3,7 @@ layout: page
 title: User Stories and Conditions of Satisfaction
 nav_exclude: true
 ---
-## User Stories and Conditions of Satisfaction
+## Activity 1: User Stories and Conditions of Satisfaction
 
 ### Introduction
 
