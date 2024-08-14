@@ -89,10 +89,10 @@ If you are concerned that by reusing and attributing that copied code it may app
 
 
 ## Accommodations for Disabilities
-Students who have disabilities who wish to receive academic services and/or accommodations should visit the [Disability Resource Center](http://www.northeastern.edu/drc) at 20 Dodge Hall or call (617) 373-2675.
-Please be sure to provide your instructor with DRC's accommodations letter early in the semester in order to avoid logistical challenges.
-This course includes a significant group project, and providing extensions for group work can be complex. 
-As-per the DRC's policy, it is the student's responsibility to coordinate with the instructor in order to provide suitable accommodations.
+Students who have disabilities who wish to receive academic services and/or accommodations should visit the [Disability Access Services](https://disabilityaccessservices.sites.northeastern.edu/) at 20 Dodge Hall or call (617) 373-2675 (previously known as DRC)
+Please be sure to provide your instructor with DAS's accommodations letter early in the semester in order to avoid logistical challenges.
+This course includes a significant group work including project, and providing extensions for group work can be complex. DAS accomodations often do not apply to group submissions but we encourage you to work with your instructors to see how course staff can provide the support you might need. 
+As-per the DAS's policy, it is the student's responsibility to coordinate with the instructor in order to request suitable accommodations.
 
 ## Title IX Notice
 *Title IX of the Education Amendments of 1972 protects individuals from sex or gender-based discrimination, including discrimination based on gender-identity, in educational programs and activities that receive federal financial assistance.*
