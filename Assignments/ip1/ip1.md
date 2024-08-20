@@ -33,7 +33,7 @@ The objectives of this assignment are to:
 ## Getting started with this assignment
 
 Before you begin, be sure to check that you have NodeJS 18.x installed, along with VSCode. We have provided a tutorial on setting up a development environment for this class. 
-Start by downloading the starter code. Extract the archive and follow the instructions given in readme.md file to configure the server and client. **Please extract the entire archive** instead of copying files over. Avery has also provided you with some very basic sanity tests that you can extend for testing your implementation as you go.
+Start by downloading the [starter code]({{site.baseurl}}{% link /Assignments/ip1/ip1_starter_code.zip %}). Extract the archive and follow the instructions given in readme.md file to configure the server and client. **Please extract the entire archive** instead of copying files over. Avery has also provided you with some very basic sanity tests that you can extend for testing your implementation as you go.
 
 
 ## Submission Instructions & Grading
@@ -48,93 +48,87 @@ Your code will be evaluated for linter errors and warnings. Submissions that hav
 ## Implementation Tasks
 This deliverable has four parts; each part will be graded on its own rubric. You should complete the assignment one part at a time, in the order presented here.
 
-# Task 1: Implement Filtering by asked_by Field
+### Task 1: Implement Filtering by asked_by Field
 The `asked_by` field in the questions schema represents the username of the user who asked the question, essentially identifying the author of the question. The objective of this task is to enhance the current functionality by adding the capability to filter questions based on the `asked_by` field. This will allow users to retrieve questions posted by a specific user.
 
-## Steps to Achieve This
-### 1. Add the filterQuestionsByAskedBy Function
+#### Steps to Achieve This
+1. Add the filterQuestionsByAskedBy Function
 Create a new function called `filterQuestionsByAskedBy` in the `application.ts` file. This function will accept a list of questions and the name of a user as arguments and filter the given list of questions, returning only those asked by the specified user.
-
-### 2. Update the getQuestionsByFilter Function
+2. Update the getQuestionsByFilter Function
 Modify the `getQuestionsByFilter` function within the questions controller to incorporate the new filtering functionality based on the `asked_by` field. This involves integrating the `filterQuestionsByAskedBy` function to ensure that the questions are filtered by the specified user before any other filtering operations.
-
-### 3. Testing the Implementation
+3. Testing the Implementation
 After implementing these changes, it's crucial to thoroughly test the new functionality. Ensure that questions are correctly filtered by the `asked_by` field, and that the existing filtering mechanisms (by search keywords and tags) remain unaffected. To demonstrate your understanding, add tests to `application.spec.ts`.
 
-# Task 2: Enhancing the Tags Model by Adding a Description Field
+### Task 2: Enhancing the Tags Model by Adding a Description Field
 The goal of this task is to enhance the existing Tags model by introducing a description field. This new field will allow users to have a descriptive overview of each tag, improving the user experience when interacting with tags. The following steps outline the modifications required in the server to accommodate this new field.
 
-## Steps to Achieve This
-### 1. Update the `getTags` Function
+#### Steps to Achieve This
+1. Update the `getTags` Function
 The current `getTags` function in `application.ts` accepts an array of tag names as strings. This function needs to be modified to accept mock tag objects from the client, which will include both the tag name and description. The updated function will:
+* Remove duplicate tags.
+* Check the database for existing tags.
+* Create new tags if they do not already exist.
+* Return the modified tags to be added to the questions.
 
-1. Remove duplicate tags.
-2. Check the database for existing tags.
-3. Create new tags if they do not already exist.
-4. Return the modified tags to be added to the questions.
-
-### 2. Add the `getTagByName` endpoint to tags controller. 
+2. Add the `getTagByName` endpoint to tags controller. 
 To allow the client to display tags along with their descriptions, a new endpoint, `getTagByName`, will be added to the tags controller. This endpoint will:
+* Accept a tag’s unique name as input.
+* Return the corresponding tag, including its name and description
 
-1. Accept a tag’s unique name as input.
-2. Return the corresponding tag, including its name and description
-
-### 3. Testing the Implementation
+3. Testing the Implementation
 To ensure the new feature works correctly, the following tests will be conducted:
+* Unit Testing: Verify that the `getTags` function correctly handles the creation of new tags, removal of duplicates, and retrieval of existing tags.
+* Endpoint Testing: Test the `getTagByName` endpoint to ensure it accurately returns the correct tag data based on the provided name.
+* Integration Testing: Validate the interaction between the updated `getTags` function and the `addQuestion` endpoint to ensure the entire process of tag retrieval and creation functions smoothly.
 
-1. Unit Testing: Verify that the `getTags` function correctly handles the creation of new tags, removal of duplicates, and retrieval of existing tags.
-2. Endpoint Testing: Test the `getTagByName` endpoint to ensure it accurately returns the correct tag data based on the provided name.
-3. Integration Testing: Validate the interaction between the updated `getTags` function and the `addQuestion` endpoint to ensure the entire process of tag retrieval and creation functions smoothly.
-
-# Task 3: Implement Sorting by Most Views
+### Task 3: Implement Sorting by Most Views
 As part of this task, you will be working on a function to retrieve questions based on their view count. You are provided with the `getQuestionsByOrder` function which is currently designed to fetch questions from a database and sort them based on the specified order. The function currently supports fetching active, unanswered, and newest questions. Your task is to implement the logic for fetching the most viewed questions.
 
-## Steps to Achieve This
-### 1. Update the OrderType type
+#### Steps to Achieve This
+1. Update the OrderType type
 Update the existing data type `OrderType` in the `types.ts` file to support the feature you are going to implement.
 
-### 2. Add the getMostViewedQuestion Function
+2. Add the getMostViewedQuestion Function
 Create a new function called `getMostViewedQuestion` in the `application.ts` file. This function should take a list of questions as input and return the questions sorted by their view count in descending order.
 
-### 3. Update the getQuestionsByOrder Function
+3. Update the getQuestionsByOrder Function
 Modify the `getQuestionsByOrder` function within the same file (`application.ts`) to incorporate the new sorting functionality. This involves integrating the changes made to the data type in Step 1 and utilizing the function implemented in Step 2.
 
-### 4. Testing the Implementation
+4. Testing the Implementation
 After implementing these changes, it's crucial to thoroughly test the new functionality. Ensure that questions are correctly sorted by most views, and that the existing sorting features (active, unanswered and newest) remain unaffected. To demonstrate your understanding, add tests to `application.spec.ts`.
 
-
-# Task 4: Implement Upvoting and Downvoting Functionality
+### Task 4: Implement Upvoting and Downvoting Functionality
 The upvoting and downvoting features allow users to express their opinions on questions by adding or removing their votes. This functionality is crucial for a community-driven platform where user engagement and feedback are important.
 
-### Upvoting a Question
+#### Upvoting a Question
 When a user upvotes a question, the following actions take place:
-- **Update Upvotes List:** The user's username is added to the `up_votes` field of the question. This field is an array that tracks all the users who have upvoted the question.
-- **Remove Downvote (if present):** If the user had previously downvoted the question, their username is removed from the `down_votes` list to prevent contradictory actions by the same user.
-- **Success and Cancellation:** If the user has already upvoted the question, their vote can be cancelled, which involves removing their username from the `up_votes` list.
+* **Update Upvotes List:** The user's username is added to the `up_votes` field of the question. This field is an array that tracks all the users who have upvoted the question.
+* **Remove Downvote (if present):** If the user had previously downvoted the question, their username is removed from the `down_votes` list to prevent contradictory actions by the same user.
+* **Success and Cancellation:** If the user has already upvoted the question, their vote can be cancelled, which involves removing their username from the `up_votes` list.
 
-### Downvoting a Question
+#### Downvoting a Question
 Similarly, when a user downvotes a question:
-- **Update Downvotes List:** The user's username is added to the `down_votes` field of the question. This field is an array that records all the users who have downvoted the question.
-- **Remove Upvote (if present):** If the user had previously upvoted the question, their username is removed from the `up_votes` list.
-- **Success and Cancellation:** If the user has already downvoted the question, their vote can be cancelled, which involves removing their username from the `down_votes` list.
+* **Update Downvotes List:** The user's username is added to the `down_votes` field of the question. This field is an array that records all the users who have downvoted the question.
+* **Remove Upvote (if present):** If the user had previously upvoted the question, their username is removed from the `up_votes` list.
+* **Success and Cancellation:** If the user has already downvoted the question, their vote can be cancelled, which involves removing their username from the `down_votes` list.
 
-### Key Points
+#### Key Points
 - Each question maintains two separate lists: `up_votes` and `down_votes`, which are updated based on user interactions.
 - Users can toggle their vote on a question, which means they can switch from upvoting to downvoting or vice versa.
 - Proper error handling ensures that issues like missing fields in requests or database errors are managed appropriately, providing a smooth user experience.
 
-## Steps to Achieve This
-#### 1. Add Upvote and Downvote Functions
+#### Steps to Achieve This
+1. Add Upvote and Downvote Functions
 Implement two functions `addUpvoteToQuestion` and `addDownvoteToQuestion` in `server/models/application.ts` to handle upvoting and downvoting of questions. These functions will:
 
-- Check if the question exists.
-- Add or remove the user's vote (upvote or downvote) as appropriate.
-- Update the question’s upvote and downvote counts.
+* Check if the question exists.
+* Add or remove the user's vote (upvote or downvote) as appropriate.
+* Update the question’s upvote and downvote counts.
 
-#### 2. Update Routes to Handle Voting
+2. Update Routes to Handle Voting
 Add two new routes `"/upvoteQuestion"` and `"/downvoteQuestion"` in `server/controller/question.ts` to handle upvote and downvote requests. These routes will use the newly created functions to update the question's votes.
 
-#### 3. Test the Voting Functionality
+3. Test the Voting Functionality
 Write tests in tests/question.spec.ts to verify the behavior of the upvote and downvote features. The tests should cover:
 - Successful upvoting and downvoting.
 - Cancelling an upvote or downvote.
