@@ -113,14 +113,13 @@ Similarly, when a user downvotes a question:
 * **Success and Cancellation:** If the user has already downvoted the question, their vote can be cancelled, which involves removing their username from the `down_votes` list.
 
 #### Key Points
-- Each question maintains two separate lists: `up_votes` and `down_votes`, which are updated based on user interactions.
-- Users can toggle their vote on a question, which means they can switch from upvoting to downvoting or vice versa.
-- Proper error handling ensures that issues like missing fields in requests or database errors are managed appropriately, providing a smooth user experience.
+* Each question maintains two separate lists: `up_votes` and `down_votes`, which are updated based on user interactions.
+* Users can toggle their vote on a question, which means they can switch from upvoting to downvoting or vice versa.
+* Proper error handling ensures that issues like missing fields in requests or database errors are managed appropriately, providing a smooth user experience.
 
 #### Steps to Achieve This
 1. Add Upvote and Downvote Functions
 Implement two functions `addUpvoteToQuestion` and `addDownvoteToQuestion` in `server/models/application.ts` to handle upvoting and downvoting of questions. These functions will:
-
 * Check if the question exists.
 * Add or remove the user's vote (upvote or downvote) as appropriate.
 * Update the question’s upvote and downvote counts.
@@ -130,9 +129,9 @@ Add two new routes `"/upvoteQuestion"` and `"/downvoteQuestion"` in `server/cont
 
 3. Test the Voting Functionality
 Write tests in tests/question.spec.ts to verify the behavior of the upvote and downvote features. The tests should cover:
-- Successful upvoting and downvoting.
-- Cancelling an upvote or downvote.
-- Handling edge cases such as missing parameters in requests.
+* Successful upvoting and downvoting.
+* Cancelling an upvote or downvote.
+* Handling edge cases such as missing parameters in requests.
 
 ## Grading for this assignment
 * Task 1 Implementation : 2 points
