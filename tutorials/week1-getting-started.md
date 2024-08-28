@@ -50,7 +50,7 @@ Before starting the installation, make sure to kill your Visual Studio Code if y
    - ![image](./assets/week1-getting-started/node/nvmw-verification.png)
 7. Install Node.js version 20 using the command `nvm install 20`.
 8. To use this version of NodeJS, run the command `nvm use 20`.
-   - ![image](./assets/week1-getting-started/node/nvmw-use-20.png)
+   - ![image](./assets/week1-getting-started/node/nvm-use-20.png)
 
 <!-- Removed step 10 because it overlaps with Verification -->
 
