@@ -20,7 +20,7 @@ If you run into any difficulties following any of these steps, please post (in a
 
 Node.js is a JavaScript runtime built on Chrome's V8 JavaScript engine.
 
-For this class, you will need Node.js version 18 (18.19.0 was the latest version at time of writing, although any 18.x or 16.x should work in theory). 
+For this class, you will need Node.js version 20 (20.17.0 was the latest version at time of writing, although any 20.x should work in theory). 
 There are many ways that you can install Node.js: for instance, you can use a package manager like
 `snap` or `homebrew` to install it; you can download an installer directly from the Node.js website, and you can,
 of course, build it from source. However, due to the complexity of running different Node.js versions on the same machine, we *very strongly* suggest using `nvm`, as explained below.
@@ -48,11 +48,9 @@ Before starting the installation, make sure to kill your Visual Studio Code if y
 6. Verify the installation, run the command `nvm version`
    - This should display the version of nvm installed.
    - ![image](./assets/week1-getting-started/node/nvmw-verification.png)
-7. Run the command `nvm list available` to display all available NodeJS versions.
-   - ![image](./assets/week1-getting-started/node/nvmw-list-available.png)
-8. Install Node.js version 18 using the command `nvm install 18`.
-9. To use this version of NodeJS, run the command `nvm use 18`.
-   - ![image](./assets/week1-getting-started/node/nvmw-use-18.png)
+7. Install Node.js version 20 using the command `nvm install 20`.
+8. To use this version of NodeJS, run the command `nvm use 20`.
+   - ![image](./assets/week1-getting-started/node/nvmw-use-20.png)
 
 <!-- Removed step 10 because it overlaps with Verification -->
 
@@ -66,8 +64,7 @@ Before starting the installation, make sure to kill your Visual Studio Code if y
 3. Verify nvm is working by entering `command -v nvm`. If your terminal prints
 out `nvm`, it should be working. If you see `nvm: command not found` or no
 feedback, open a new terminal and trying again or restart from step 1.
-4. Install the required version of Node.js by typing `nvm install 18`.
-> Note: While the LTS of node is 20, we are using 18 for this class (and has been tested on node version 18).
+4. Install the required version of Node.js by typing `nvm install 20`.
 
 ### Installing NVM when using the fish terminal (Linux / Mac)
 > Note: When using the Fish terminal, [`nvm.fish`](https://github.com/jorgebucaran/nvm.fish) should be used to install nvm. 
@@ -77,7 +74,7 @@ feedback, open a new terminal and trying again or restart from step 1.
 1. Install nvm.fish using Fisher: `fisher install jorgebucaran/nvm.fish`
 2. Restart fish by entering `fish` in your active terminal
 3. Verify nvm is working by entering `nvm -v`
-4. Install the required version of Node.js by typing `nvm install 18`.
+4. Install the required version of Node.js by typing `nvm install 20`.
 
 *Working with MacOS M1 Silicon*: If you have macOS on M1 Silicon 2022, you can find instructions [here](https://benscheer.medium.com/how-to-install-nvm-and-node-on-macos-m1-silicon-in-2022-172fba82d92f).
 
@@ -85,15 +82,14 @@ feedback, open a new terminal and trying again or restart from step 1.
 
 1. Open a shell (for Linux / Mac) or windows powershell/command prompt (for Windows).
 2. Run the command `node -v`
-  - This should print the current version of nodeJS installed (v18.x.x).
+  - This should print the current version of nodeJS installed (20.x.x).
 3. Run the command `npm -v`
-- This should print the current version of npm installed (v10.x.x).
-![image](./assets/week1-getting-started/node/verification.png)
-![image](./assets/week1-getting-started/node/nvm_using_fish.png)
-4. If you find that some other version is being used, run the command `nvm use 18`. For Linux / Mac, you can change the default to 18 by running the command `nvm alias default 18`.
+  - This should print the current version of npm installed (v10.x.x).
+  - ![image](./assets/week1-getting-started/node/verification.png)
+4. If you find that some other version is being used, run the command `nvm use 20`. For Linux / Mac, you can change the default to 20 by running the command `nvm alias default 20`.
 
 > Note: The `alias` command is not compatible with `nvm.fish`. Instead, you can 
-> add a default version with the command `exec nvm use 18` in your `~/.config/fish/config.fish` file.
+> add a default version with the command `exec nvm use 20` in your `~/.config/fish/config.fish` file.
 
 # Installing Visual Studio Code (VSCode)
 
