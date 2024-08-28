@@ -117,9 +117,9 @@ String is the set of all strings and the things you can do with them like concat
 
 Example: 
 ```ts
-let a: string = 'hello'           // any
-let b: string = 'world'           // any
-let c: string = a + ' ' + b       // any
+let a: string = 'hello'           // string
+let b: string = 'world'           // string
+let c: string = a + ' ' + b       // string
 ```
 
 *   _Usage_: 
@@ -134,7 +134,7 @@ string.charAt(index)
 **slice()** : This method extracts a section of a string and returns a new string. 
 Syntax:
 ```ts 
-string.slice( beginslice [, endSlice])
+string.slice( beginSlice [, endSlice])
 ```
 **split()** : This method splits a String object into an array of strings by separating the string into substrings. 
 Syntax: 
