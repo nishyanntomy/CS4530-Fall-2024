@@ -8,6 +8,8 @@ nav_order: 4
 
 This tutorial covers the basics on unit testing with Jest. By the end of this tutorial, you will have an introduction to unit testing with jest, best practices, and some handy tricks and tips to use in your tests. Starter code is available [here](./assets/week1-unit-testing/jest-tutorial-starter-code.zip), and finished code with tests covered in this tutorial can be found [here](./assets/week1-unit-testing/jest-tutorial-solution.zip). We strongly recommend using the completed solution only for reference and implementing the tutorial step by step from the starter code.
 
+_Note:_ Run `npm i` on the handouts before proceeding to update/run the tests.
+
 Contents:
 
 - [Understanding Unit Testing](#understanding-unit-testing)
@@ -332,7 +334,7 @@ _Note:_ Use beforeEach()/afterEach() if the function/class stores state, and we 
         });
 
         afterAll(() => {
-          calculator = undefined;
+          (<any>calculator) = undefined;
         });
 
         it("should return 2 when inputs are 1 and 1", () => {
@@ -360,7 +362,7 @@ Let us add another test to cover a different scenario, such as adding negative n
         });
 
         afterAll(() => {
-          calculator = undefined;
+          (<any>calculator) = undefined;
         });
 
         it("should return 2 when inputs are 1 and 1", () => {
@@ -403,11 +405,11 @@ In our example, we have an external dependency on console.log(). Let us add a sp
         });
 
         afterAll(() => {
-          calculator = undefined;
+          (<any>calculator) = undefined;
         });
 
         it("should invoke console.log() with the result 2 for inputs 1 and 1", () => {
-          const logSpy = jest.spyOn(window.console, "log");
+          const logSpy = jest.spyOn(console, "log");
 
           const result: number = calculator.add(1, 1);
 
@@ -435,7 +437,7 @@ In our example, if we wanted to replace the behavior of console.log(), we can do
 
 ```ts
   it("should invoke console.log() with the result 2 for inputs 1 and 1", () => {
-    const logSpy = jest.spyOn(window.console, "log");
+    const logSpy = jest.spyOn(console, "log");
     logSpy.mockImplementation(() => {
       // This will no longer print to console.
     });
@@ -469,7 +471,7 @@ Using a stub in our example simply prevents console.log() from being executed, s
 
   ```ts
   it("should invoke console.log() with the result 2 for inputs 1 and 1", () => {
-    const logSpy = jest.spyOn(window.console, "log");
+    const logSpy = jest.spyOn(console, "log");
     logSpy.mockReturnValue();
 
     const result: number = calculator.add(1, 1);
@@ -581,6 +583,8 @@ We can test the above functionality as follows:
     });
   });
   ```
+
+You can read more about jest timers [here](https://jestjs.io/docs/timer-mocks).
 
 ### Callbacks
 
