@@ -21,6 +21,7 @@ This tutorial covers the basic concepts of UI testing and end-to-end (E2E) testi
   - [Scenario 1: Testing a Login Form](#scenario-1-testing-a-login-form)
   - [Scenario 2: Testing a Search Feature](#scenario-2-testing-a-search-feature)
   - [Scenario 3: Form Submission and Validation](#scenario-3-form-submission-and-validation)
+ - [Where to Place Cypress Tests](#where-to-place-cypress-tests)
 - [Useful Resources](#useful-resources)
 
 ## What is UI Testing?
@@ -100,7 +101,7 @@ Here are a few scenarios that show how Cypress can be used for UI testing:
 ### Scenario 1: Testing a Login Form
 This test checks if the login form functions as expected when correct and incorrect credentials are submitted.
 
-```bash
+```typescript
 describe('Login Form', () => {
   it('Should show error for incorrect credentials', () => {
     cy.visit('/login');
@@ -122,7 +123,7 @@ describe('Login Form', () => {
 
 ### Scenario 2: Testing a Search Feature
 This test verifies that searching for a keyword returns the correct results.
-```bash
+```typescript
 describe('Search Feature', () => {
   it('Should display search results when a keyword is entered', () => {
     cy.visit('/search');
@@ -137,7 +138,7 @@ describe('Search Feature', () => {
 ### Scenario 3: Form Submission and Validation
 In this scenario, we check if a form validates input and submits correctly.
 
-```bash
+```typescript
 describe('Form Submission', () => {
   it('Should display validation errors for empty fields', () => {
     cy.visit('/form');
@@ -155,6 +156,48 @@ describe('Form Submission', () => {
   });
 });
 ```
+
+## Where to Place Cypress Tests
+Here is the typical structure of a Cypress project:
+
+### 1. Cypress Folder Structure: 
+After running npx cypress open, Cypress will create a folder structure like this:
+```bash
+cypress/
+├── e2e/          # Your test files go here
+├── fixtures/     # Test data (JSON files) for mocking server responses
+├── support/      # Reusable commands and hooks
+└── cypress.config.js  # Cypress configuration file
+```
+
+### 2. Create Test Files:
+Inside the cypress/e2e directory, create separate test files for each feature you want to test. For example:
+```bash
+cypress/
+├── e2e/
+│   ├── login.cy.ts           # Login tests
+│   ├── search.cy.ts          # Search tests
+│   ├── formSubmission.cy.ts  # Form submission tests
+```
+
+### 3. Adding describe Blocks:
+Each test file should contain one or more describe blocks, which group related tests. These blocks and individual it blocks go inside the respective test files.
+
+Example:
+```bash
+// cypress/e2e/login.cy.ts
+describe('Login Form', () => {
+  // individual tests inside 'it' blocks
+});
+```
+
+### 4. Running Tests:
+You can run all tests either through the Cypress Test Runner or in headless mode with:
+```bash
+npx cypress run
+```
+
+
 
 ## Useful Resources
 
